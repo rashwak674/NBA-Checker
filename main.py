@@ -58,22 +58,7 @@ def blocks_per_game():
 team_id = str(input("Enter team ID: ")) #change this
 points_per_game()
 
-'''plt.ylim(50,130)
+plt.ylim(50,130)
 plt.xlim(1990, 2024)
 plt.plot(years, stats_values,'-o', color ='blue')
-plt.show()'''
-
-team_abbrs = []
-team_abbrs_data = json.loads(http_get_request("https://www.balldontlie.io/api/v1/teams"))
-for team in team_abbrs_data['data']:
-   team_abbrs.append(team['abbreviation'])
-   
-
-url_start = "https://www.basketball-reference.com/teams/{}/{}.html"
-for year in range(1990, 2023):
-   url = url_start.format(str(team_abbrs[int(team_id)-1]), str(year))
-   data = requests.get(url)
-
-   with open("data/{}.html".format(year), "w+", encoding="utf-8") as f:
-      f.write(data.text)
-
+plt.show()
